@@ -120,3 +120,46 @@ This repository is featured in the [Awesome MCP Servers](https://github.com/punk
 ## Find me at
 <a href="https://www.instagram.com/aiburner_official" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/instagram.svg" alt="aiburner_official" height="30" width="40" /></a>
 @aiburner_official
+
+
+## Installation using UV
+
+`UV` is Astral's lightweight Python environment manager. It creates a reproducible virtual environment, installs dependencies from your lockfile, and keeps the project isolated from your system Python.
+
+Install UV from Astral's official docs: https://docs.astral.sh/uv/getting-started/installation/
+
+Then run:
+
+```sh
+uv sync
+```
+
+This creates a virtual environment and installs the required dependencies automatically.
+
+
+#### Integration with Claude
+
+To integrate the Manim MCP server with Claude, add the following to your `claude_desktop_config.json` file:
+
+```json
+{
+  "mcpServers": {
+    "manim-server": {
+      "command": "/absolute/path/to/.venv/Scripts/python.exe",
+      "args": [
+        "/absolute/path/to/manim-mcp-server/src/manim_server.py"
+      ],
+      "env": {
+        "MANIM_EXECUTABLE": "/absolute/path/to/.venv/Scripts/manim.exe"
+      }
+    }
+  }
+}
+```
+
+> **NOTE : ** After updating the config, quit Claude completely and restart it and not just closing the window so that the new settings to take effect.
+>
+> - Press `Ctrl + Shift + Esc` to open Task Manager
+> - Find `Claude` in the process list
+> - End the Claude process
+> - Restart Claude 
